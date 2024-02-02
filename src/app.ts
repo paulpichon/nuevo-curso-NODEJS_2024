@@ -1,31 +1,18 @@
-// para poder imprimir en consola
-import fs from 'fs';
+import { yarg } from "./config/plugins/args.plugin";
 
-// Tablas de multiplicar
-let outPutMesssage = '';
-const base = 5;
-const headerMessage = `
-    ================================================
-                 TABLAS DEL ${ base }               
-    ================================================\n
-`;
+// console.log( process.argv );
 
-for (let i = 1; i <= 10; i++) {
-    
-    outPutMesssage += `${ base } x ${ i } = ${ base * i }\n`;
+// console.log( yarg.b );
+
+(async () => {
+
+    await main();
+    console.log("fin de programa");
+        
+})();
+
+
+
+async function main() {
     
 }
-// imprimir en consola
-outPutMesssage = headerMessage + outPutMesssage;
-
-// crear caroeta donde iran las tablas
-const outputPath = `output`;
-// creacion dle directorio
-fs.mkdirSync(outputPath, { recursive: true } );
-
-// guardar en un archivo
-fs.writeFileSync(`${ outputPath }/tabla-${ base }.txt`, outPutMesssage);
-console.log('File created');
-
-
-
