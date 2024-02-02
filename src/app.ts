@@ -7,12 +7,14 @@ import { yarg } from "./config/plugins/args.plugin";
 (async () => {
 
     await main();
-    console.log("fin de programa");
         
 })();
 
 
 
 async function main() {
+
+    console.log( yarg );
+    
     
 }
