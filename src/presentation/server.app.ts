@@ -5,14 +5,16 @@ import { SaveFile } from "../domain/use-cases/save-file.use-case";
 
 // interfaz
 interface RunOptions {
-    base: number;
-    limit: number;
-    showTable: boolean;
+    base           : number;
+    limit          : number;
+    showTable      : boolean;
+    fileName       : string;
+    fileDestination: string;
 }
 
 export class ServerApp {
 
-    static run({ base, limit, showTable }: RunOptions ) {
+    static run({ base, limit, showTable, fileName, fileDestination }: RunOptions ) {
         console.log('Server running');      
         // creamos una instancia CreateTable
         const table = new CreateTable().execute({ base, limit });
@@ -20,7 +22,8 @@ export class ServerApp {
         const wasCreated = new SaveFile()
             .execute({ 
                 fileContent: table,
-                fileDestination: `outputs/table-${ base }`,
+                fileDestination: fileDestination,
+                fileName: fileName
             });
         // log para mostrar la tabla
         if (showTable) console.log( table );

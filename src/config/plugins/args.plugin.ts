@@ -23,6 +23,18 @@ export const yarg = yargs(hideBin(process.argv) )
         default: false,
         description: 'Mostrar la tabla de multiplicacion'
     })
+    .option('n', {
+        alias: 'name',
+        type:'string',
+        default: 'multiplication-table',
+        description: 'Nombre del archivo'
+    })
+    .option('d',{
+        alias: 'destination',
+        type:'string',
+        default: 'outputs',
+        description: 'Directorio donde se guardaran los archivos'
+    })
     // las options no seran usadas
     .check(( argv, options ) => {
         
